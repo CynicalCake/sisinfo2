@@ -40,7 +40,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $course->name }}</h5>
                         <p class="card-text">{{ $course->description }}</p>
-                        <a href="#" class="btn btn-primary">Ir al Curso</a>
+                        <a href="{{ route('courses.show', $course->code) }}" class="btn btn-primary">Ir al Curso</a>
                     </div>
                 </div>
             </div>

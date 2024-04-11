@@ -46,9 +46,12 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $code)
     {
-        //
+        $course = Course::where('code', $code)->firstOrFail();
+        $posts = $course->posts;
+
+        return view('course.show', compact('course', 'posts'));
     }
 
     /**
