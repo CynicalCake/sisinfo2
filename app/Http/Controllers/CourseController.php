@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Symfony\Component\Clock\Clock;
+use Illuminate\Support\Str;
+use PHPUnit\Framework\Constraint\Count;
 
 class CourseController extends Controller
 {
@@ -29,7 +32,15 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $course = new Course();
+        $course->name = $request->get('name');
+        $course->description = $request->get('description');
+
+        $course->code = $this->generateCode();
+
+        $course->save();
+
+        return redirect('/courses');
     }
 
     /**
@@ -66,6 +77,15 @@ class CourseController extends Controller
 
     public function generateCode()
     {
-        //
+        do {
+            $code = Str::random(6);
+        } while ($this->codeExists($code));
+
+        return $code;
+    }
+
+    public function codeExists(string $code)
+    {
+        return Course::where('code', $code)->exists();
     }
 }

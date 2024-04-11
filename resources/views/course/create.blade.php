@@ -7,10 +7,6 @@
     <title>Crear Clase</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <style>
-        /* Agrega aquí tus estilos personalizados */
-    </style>
 </head>
 
 <body>
@@ -36,22 +32,22 @@
         </div>
     </nav>
 
+    <br>
     <!-- Contenido principal -->
     <div class="container mt-4">
         <div class="row">
             <!-- Formulario de Crear Clase -->
             <div class="col-md-6 offset-md-3">
                 <h2>Crear Clase</h2>
-                <form>
+                <form action="/courses" method="POST">
+                    @csrf
                     <div class="form-group">
                         <label for="nombreClase">Nombre de Clase</label>
-                        <input type="text" class="form-control" id="nombreClase"
-                            placeholder="Introduce el nombre de la clase">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Introduce el nombre de la clase">
                     </div>
                     <div class="form-group">
                         <label for="descripcionClase">Descripción</label>
-                        <textarea class="form-control" id="descripcionClase" rows="3"
-                            placeholder="Escribe aquí la descripción de la clase"></textarea>
+                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Escribe aquí la descripción de la clase"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Crear Clase</button>
                 </form>
