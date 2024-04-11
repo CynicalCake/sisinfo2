@@ -49,7 +49,7 @@
       <div class="col-md-9">
         <h2>Tablón de Anuncios</h2>
         <!-- Publicar Anuncio -->
-        <form id="formAnuncio">
+        <form>
           <div class="form-group">
             <label for="tituloAnuncio">Título del Anuncio</label>
             <input type="text" class="form-control" id="tituloAnuncio" placeholder="Introduce el título del anuncio">
@@ -62,40 +62,24 @@
         </form>
         <!-- Lista de Anuncios -->
         <div class="mt-4">
-          <!-- Se agregará la lista de anuncios en la próxima versión -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Anuncio 1</h5>
+              <p class="card-text">Contenido del anuncio 1</p>
+            </div>
+          </div>
+          <div class="card mt-2">
+            <div class="card-body">
+              <h5 class="card-title">Anuncio 2</h5>
+              <p class="card-text">Contenido del anuncio 2</p>
+            </div>
+          </div>
+          <!-- Agrega más tarjetas de anuncios según sea necesario -->
         </div>
       </div>
     </div>
   </div>
-  <script>
-    document.getElementById("formAnuncio").addEventListener("submit", function(event) {
-      event.preventDefault();
-      var titulo = document.getElementById("tituloAnuncio").value;
-      var contenido = document.getElementById("contenidoAnuncio").value;
-      var listaAnuncios = document.getElementById("listaAnuncios");
-  
-      var card = document.createElement("div");
-      card.classList.add("card", "mt-2");
-      var cardBody = document.createElement("div");
-      cardBody.classList.add("card-body");
-      var cardTitle = document.createElement("h5");
-      cardTitle.classList.add("card-title");
-      cardTitle.textContent = titulo;
-      var cardText = document.createElement("p");
-      cardText.classList.add("card-text");
-      cardText.textContent = contenido;
-  
-      cardBody.appendChild(cardTitle);
-      cardBody.appendChild(cardText);
-      card.appendChild(cardBody);
-  
-      listaAnuncios.appendChild(card);
-  
-      // Limpiar campos del formulario
-      document.getElementById("tituloAnuncio").value = "";
-      document.getElementById("contenidoAnuncio").value = "";
-    });
-  </script>
+
   <!-- Bootstrap JS y dependencias -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
