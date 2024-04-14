@@ -55,9 +55,10 @@
                             aria-controls="tasks" aria-selected="false">Tareas</a>
                     </li>
                 </ul>
+                <br>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-                        <br>
+
                         <!-- Lista de Posts -->
                         <h3>Tablón de Anuncios</h3>
                         <!-- Publicar Anuncio -->
@@ -91,6 +92,14 @@
                     </div>
                     <div class="tab-pane fade" id="tasks" role="tabpanel" aria-labelledby="tasks-tab">
                         <!-- Lista de Tasks -->
+                        <h3>Tareas</h3>
+                        {{-- <form action="{{ route('tasks.create') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="course-code" value="{{ $course->code }}">
+                            <button type="submit" class="btn btn-primary">Nueva tarea</button>
+                        </form> --}}
+                        {{-- <a href="{{ route('tasks.create') }}" class="btn btn-primary">Nueva tarea</a> --}}
+                        <a href="{{ route('tasks.create', ['course_code' => $course->code]) }}" class="btn btn-primary">Nueva tarea</a>
                         <div class="mt-4">
                             @foreach ($tasks as $task)
                                 <div class="card mt-3">

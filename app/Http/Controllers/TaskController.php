@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -17,9 +20,9 @@ class TaskController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $courseCode)
     {
-        //
+        return view('task.create', ['courseCode' => $courseCode]);
     }
 
     /**
@@ -27,7 +30,20 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $course = Course::where('code', $request->get('course-code'))->first();
+
+        $task = new Task();
+
+        $task->user_id = Auth::id();
+        $task->course_id = $course->id;
+        $task->title = $request->get('task-title');
+        $task->description = $request->get('task-description');
+        $task->deadline = $request->get('task-deadline');
+        $task->score = $request->get('task-score');
+
+        $task->save();
+
+        return redirect('/courses/'.$request->get('course-code'));
     }
 
     /**
