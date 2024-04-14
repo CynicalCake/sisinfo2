@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Inscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Clock\Clock;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Constraint\Count;
@@ -15,8 +17,16 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
-        return view('course.index')->with('courses', $courses);
+        // Obtener el ID del usuario autenticado
+        $userId = Auth::id();
+
+        // Obtener los IDs de los cursos en los que el usuario está inscrito
+        $courseIds = Inscription::where('user_id', $userId)->pluck('course_id');
+
+        // Obtener los cursos correspondientes a los IDs obtenidos
+        $courses = Course::whereIn('id', $courseIds)->get();
+
+        return view('course.index', compact('courses'));
     }
 
     /**
