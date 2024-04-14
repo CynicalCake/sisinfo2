@@ -32,5 +32,60 @@
             </ul>
         </div>
     </nav>    
+
+    <div class="container">
+        <h2 class="mt-4 mb-4">Crear Tarea</h2>
+        <form id="taskForm">
+          <div class="form-group">
+            <label for="taskTitle">Título:</label>
+            <input type="text" class="form-control" id="taskTitle" name="taskTitle" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="taskDescription">Descripción:</label>
+            <textarea class="form-control" id="taskDescription" name="taskDescription" rows="4" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="dueDate">Fecha de Vencimiento:</label>
+            <input type="date" class="form-control" id="dueDate" name="dueDate" required>
+          </div>
+
+          <div class="form-group">
+            <label for="taskScore">Puntaje:</label>
+            <input type="number" class="form-control" id="taskScore" name="taskScore" min="0" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Crear Tarea</button>
+        </form>
+
+        <div class="mt-4">
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Tarea 1</h5>
+                <p class="card-text">Contenido de la Tarea 1</p>
+                <div class="d-flex justify-content-between align-items-center">                   
+                    <p class="card-text">Entregado por: 30 estudiantes</p>
+                </div>
+            </div>
+        </div>
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Tarea 2</h5>
+                <p class="card-text">Contenido de la Tarea 2</p>
+                <div class="d-flex justify-content-between align-items-center">                   
+                    <p class="card-text">Entregado por: 15 estudiantes</p>
+                </div>
+            </div>
+        </div>
+          
+        </div>
+      </div>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
 </body>
 </html>
