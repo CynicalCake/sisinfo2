@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjuntar Archivos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Agrega aquí tus estilos personalizados */
+    </style>
+</head>
+
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Plataforma de Estudios</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tablón de Anuncios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Trabajo en Clase</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Personas</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Sidebar
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action active">Clases Disponibles</a>
+                    <a href="#" class="list-group-item list-group-item-action">Clase 1</a>
+                    <a href="#" class="list-group-item list-group-item-action">Clase 2</a>
+                    <a href="#" class="list-group-item list-group-item-action">Clase 3</a>
+                </div>
+            </div> -->
+            <!-- Adjuntar archivos -->
+            <div class="col-md-9">
+                <h2>Adjuntar Archivos</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="fileInput">Seleccionar Archivos</label>
+                        <input type="file" class="form-control-file" id="fileInput" aria-describedby="fileHelp" multiple>
+                        <small id="fileHelp" class="form-text text-muted">Por favor selecciona los archivos que deseas adjuntar. Puedes seleccionar múltiples archivos.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adjuntar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
