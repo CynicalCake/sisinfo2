@@ -24,7 +24,8 @@
                 <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action active">Acceso rápido</a>
                     @foreach ($myCourses as $myCourse)
-                        <a href="/courses/{{ $myCourse->code }}" class="list-group-item list-group-item-action">{{ $myCourse->name }}</a>
+                        <a href="/courses/{{ $myCourse->code }}"
+                            class="list-group-item list-group-item-action">{{ $myCourse->name }}</a>
                     @endforeach
                 </div>
             </div>
@@ -43,35 +44,67 @@
                     <dd class="col-sm-9">{{ $course->id }}</dd>
                 </dl>
 
-                <h3>Tablón de Anuncios</h3>
-                <!-- Publicar Anuncio -->
-                <form method="POST" action="{{ route('posts.store') }}">
-                    @csrf
-                    <div class="form-group">
-                        <label for="tituloAnuncio">Título del Anuncio</label>
-                        <input type="text" class="form-control" id="post-title" name="post-title" placeholder="Introduce el título del anuncio">
-                    </div>
-                    <div class="form-group">
-                        <label for="contenidoAnuncio">Contenido del Anuncio</label>
-                        <textarea class="form-control" id="post-description" name="post-description" rows="3" placeholder="Escribe aquí el contenido del anuncio"></textarea>
-                    </div>
-                    <input type="hidden" name="course-id" value="{{ $course->id }}">
-                    <input type="hidden" name="course-code" value="{{ $course->code }}">
-                    <button type="submit" class="btn btn-primary">Publicar Anuncio</button>
-                </form>
                 <!-- Lista de Anuncios -->
-                <div class="mt-4">
-                    @foreach ($posts as $post)
-                        <div class="card mt-3">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $post->title }}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{ $post->user->name }}</h6>
-                                <p class="card-text">{{ $post->description }}</p>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab"
+                            aria-controls="posts" aria-selected="true">Anuncios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tasks-tab" data-toggle="tab" href="#tasks" role="tab"
+                            aria-controls="tasks" aria-selected="false">Tareas</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                        <br>
+                        <!-- Lista de Posts -->
+                        <h3>Tablón de Anuncios</h3>
+                        <!-- Publicar Anuncio -->
+                        <form method="POST" action="{{ route('posts.store') }}">
+                            @csrf
+                            <div class="form-group">
+                                <label for="tituloAnuncio">Título del Anuncio</label>
+                                <input type="text" class="form-control" id="post-title" name="post-title"
+                                    placeholder="Introduce el título del anuncio">
                             </div>
+                            <div class="form-group">
+                                <label for="contenidoAnuncio">Contenido del Anuncio</label>
+                                <textarea class="form-control" id="post-description" name="post-description" rows="3"
+                                    placeholder="Escribe aquí el contenido del anuncio"></textarea>
+                            </div>
+                            <input type="hidden" name="course-id" value="{{ $course->id }}">
+                            <input type="hidden" name="course-code" value="{{ $course->code }}">
+                            <button type="submit" class="btn btn-primary">Publicar Anuncio</button>
+                        </form>
+                        <div class="mt-4">
+                            @foreach ($posts as $post)
+                                <div class="card mt-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $post->title }}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">{{ $post->user->name }}</h6>
+                                        <p class="card-text">{{ $post->description }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-                    @endforeach
-                    <!-- Agrega más tarjetas de anuncios según sea necesario -->
+                    </div>
+                    <div class="tab-pane fade" id="tasks" role="tabpanel" aria-labelledby="tasks-tab">
+                        <!-- Lista de Tasks -->
+                        <div class="mt-4">
+                            @foreach ($tasks as $task)
+                                <div class="card mt-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $task->title }}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">{{ $task->user->name }}</h6>
+                                        <p class="card-text">{{ $task->description }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

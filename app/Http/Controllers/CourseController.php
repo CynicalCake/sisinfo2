@@ -64,8 +64,9 @@ class CourseController extends Controller
 
         $course = Course::where('code', $code)->firstOrFail();
         $posts = $course->posts;
+        $tasks = $course->tasks;
 
-        return view('course.show', compact('course', 'posts', 'myCourses'));
+        return view('course.show', compact('course', 'posts', 'tasks', 'myCourses'));
     }
 
     /**
