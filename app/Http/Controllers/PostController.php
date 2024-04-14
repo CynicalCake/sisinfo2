@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -33,6 +34,7 @@ class PostController extends Controller
         $post->title = $request->get('post-title');
         $post->description = $request->get('post-description');
         $post->course_id = $request->get('course-id');
+        $post->user_id = Auth::id();
 
         $post->save();
 

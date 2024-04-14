@@ -10,29 +10,8 @@
 </head>
 
 <body>
-    <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Plataforma de Estudios</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tablón de Anuncios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Trabajo en Clase</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Personas</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    @include('navbar')
 
-    <br>
     <!-- Contenido principal -->
     <div class="container mt-4">
         <div class="row">
@@ -42,11 +21,11 @@
                 <form action="/courses" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="nombreClase">Nombre de Clase</label>
+                        <label for="course-name">Nombre de Clase</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Introduce el nombre de la clase">
                     </div>
                     <div class="form-group">
-                        <label for="descripcionClase">Descripción</label>
+                        <label for="course-description">Descripción</label>
                         <textarea class="form-control" id="description" name="description" rows="3" placeholder="Escribe aquí la descripción de la clase"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Crear Clase</button>
