@@ -14,27 +14,7 @@
 </head>
 
 <body>
-    <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Plataforma de Estudios</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tablón de Anuncios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Trabajo en Clase</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Personas</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    @include('navbar')
 
     <!-- Contenido principal -->
     <div class="container mt-4">
@@ -42,10 +22,10 @@
             <!-- Sidebar -->
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action active">Clases Disponibles</a>
-                    <a href="#" class="list-group-item list-group-item-action">Clase 1</a>
-                    <a href="#" class="list-group-item list-group-item-action">Clase 2</a>
-                    <a href="#" class="list-group-item list-group-item-action">Clase 3</a>
+                    <a href="#" class="list-group-item list-group-item-action active">Acceso rápido</a>
+                    @foreach ($myCourses as $myCourse)
+                        <a href="/courses/{{ $myCourse->code }}" class="list-group-item list-group-item-action">{{ $myCourse->name }}</a>
+                    @endforeach
                 </div>
             </div>
             <!-- Tablón de Anuncios -->

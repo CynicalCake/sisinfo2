@@ -10,42 +10,20 @@
 </head>
 
 <body>
-    <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Plataforma de Estudios</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tablón de Anuncios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Trabajo en Clase</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Personas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Unirse a nueva clase</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    @include('navbar')
+
     <!-- Contenido principal -->
     <div class="container mt-4">
         <div class="row">
 
             <!-- Tablón de Anuncios -->
-            <div class="col-md-9">
+            <div class="col-md-6 offset-md-3">
                 <h2>Unirse a clase</h2>
                 <!-- Publicar Anuncio -->
                 <form action="/inscriptions" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="course-code">Código de clase</label>
+                        <label for="course-code">Código de clase:</label>
                         <input type="text" class="form-control" id="course-code" name="course-code" placeholder="Introduce el código de la clase">
                     </div>
 
