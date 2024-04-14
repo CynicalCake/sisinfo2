@@ -59,11 +59,7 @@ class CourseController extends Controller
     public function show(string $code)
     {
         $userId = Auth::id();
-
-        // Obtener los IDs de los cursos en los que el usuario está inscrito
         $courseIds = Inscription::where('user_id', $userId)->pluck('course_id');
-
-        // Obtener los cursos correspondientes a los IDs obtenidos
         $myCourses = Course::whereIn('id', $courseIds)->get();
 
         $course = Course::where('code', $code)->firstOrFail();
