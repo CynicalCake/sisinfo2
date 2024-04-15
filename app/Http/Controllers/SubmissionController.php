@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Submission;
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class SubmissionController extends Controller
 {
@@ -27,7 +32,27 @@ class SubmissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasFile('submission-file')) {
+            $file = $request->file('submission-file');
+            $fileName = $file->getClientOriginalName().' - '.Auth::id();
+            $file->storeAs('public/sumbissions', $fileName);
+        }
+
+        $sumbission = new Submission();
+
+        $sumbission->user_id = Auth::id();
+        $sumbission->task_id = $request->get('task-id');
+        $sumbission->comment = $request->get('comment');
+        $sumbission->submitted_at = Carbon::now();
+        $sumbission->file_path = $fileName ?? null;
+
+        $sumbission->save();
+
+        $task = Task::find($request->get('task-id'));
+
+        $course = Course::find($task->course_id);
+
+        return redirect('/tasks/'.$task->id);
     }
 
     /**

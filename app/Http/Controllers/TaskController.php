@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Submission;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +52,15 @@ class TaskController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $task = Task::find($id);
+
+        $user = Auth::user();
+
+        $existingSubmission = Submission::where('task_id', $id)
+                                        ->where('user_id', $user->id)
+                                        ->exists();
+
+        return view('task.show', compact('task', 'existingSubmission'));
     }
 
     /**

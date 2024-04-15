@@ -7,10 +7,6 @@
     <title>{{ $course->name }}</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <style>
-        /* Agrega aquí tus estilos personalizados */
-    </style>
 </head>
 
 <body>
@@ -104,7 +100,7 @@
                             @foreach ($tasks as $task)
                                 <div class="card mt-3">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $task->title }}</h5>
+                                        <h5 class="card-title"><a href="{{ route('tasks.show', $task->id) }}">{{ $task->title }}</a></h5>
                                         <h6 class="card-subtitle mb-2 text-muted">{{ $task->user->name }}</h6>
                                         <p class="card-text">{{ $task->description }}</p>
                                     </div>
