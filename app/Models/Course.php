@@ -21,7 +21,12 @@ class Course extends Model
 
     public function inscriptions()
     {
-        return $this->hasMany('App\Models\Inscription');
+        return $this->hasMany(Inscription::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'inscriptions');
     }
 
 }

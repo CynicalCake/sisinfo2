@@ -59,14 +59,17 @@ class CourseController extends Controller
     public function show(string $code)
     {
         $userId = Auth::id();
+
         $courseIds = Inscription::where('user_id', $userId)->pluck('course_id');
         $myCourses = Course::whereIn('id', $courseIds)->get();
 
         $course = Course::where('code', $code)->firstOrFail();
+
         $posts = $course->posts;
         $tasks = $course->tasks;
+        $users = $course->users;
 
-        return view('course.show', compact('course', 'posts', 'tasks', 'myCourses'));
+        return view('course.show', compact('course', 'posts', 'tasks', 'myCourses', 'users'));
     }
 
     /**

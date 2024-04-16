@@ -33,7 +33,7 @@
         @else
             <div class="card">
                 <div class="card-header">
-                    Entrega tu tarea aquí
+                    Entregar tarea:
                 </div>
                 <div class="card-body">
                     <form action="{{ route('submissions.store') }}" method="POST" enctype="multipart/form-data">
@@ -46,13 +46,13 @@
 
                         {{-- Apartado para subir el archivo --}}
                         <div class="form-group">
-                            <label for="submission-file">Sube tu tarea:</label>
+                            <label for="submission-file">Subir tarea:</label>
                             <input type="file" class="form-control-file" id="submission-file" name="submission-file" required>
                         </div>
 
                         <input type="hidden" name="task-id" value="{{ $task->id }}">
 
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn btn-primary">Entregar</button>
                     </form>
                 </div>
             </div>
