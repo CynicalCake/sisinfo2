@@ -36,6 +36,7 @@
 
                     @if ($course->owner == Auth::id())
                         <dt class="col-sm-3"><h4><span class="badge badge-secondary">Eres docente</span></h4></dt>
+                        <dd><a href="{{ route('courses.edit', $course->id) }}" class="btn btn-sm btn-outline-primary">Editar información del curso</a></dd>
                     @else
                         <dt class="col-sm-3"><h4><span class="badge badge-secondary">Eres estudiante</span></h4></dt>
                     @endif

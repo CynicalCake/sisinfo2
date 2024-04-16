@@ -82,7 +82,9 @@ class CourseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $course = Course::find($id);
+
+        return view('course.edit', compact('course'));
     }
 
     /**
@@ -90,7 +92,13 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $course = Course::find($id);
+        $course->name = $request->get('name');
+        $course->description = $request->get('description');
+
+        $course->save();
+
+        return redirect('/courses/'.$course->code);
     }
 
     /**
