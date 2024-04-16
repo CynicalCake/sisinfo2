@@ -48,6 +48,10 @@
                         <a class="nav-link" id="tasks-tab" data-toggle="tab" href="#tasks" role="tab"
                             aria-controls="tasks" aria-selected="false">Tareas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="users-tab" data-toggle="tab" href="#users" role="tab"
+                            aria-controls="users" aria-selected="false">Personas</a>
+                    </li>
                 </ul>
                 <br>
                 <div class="tab-content" id="myTabContent">
@@ -93,18 +97,41 @@
                             <button type="submit" class="btn btn-primary">Nueva tarea</button>
                         </form> --}}
                         {{-- <a href="{{ route('tasks.create') }}" class="btn btn-primary">Nueva tarea</a> --}}
-                        <a href="{{ route('tasks.create', ['course_code' => $course->code]) }}" class="btn btn-primary">Nueva tarea</a>
+                        <a href="{{ route('tasks.create', ['course_code' => $course->code]) }}"
+                            class="btn btn-primary">Nueva tarea</a>
                         <div class="mt-4">
                             @foreach ($tasks as $task)
                                 <div class="card mt-3">
                                     <div class="card-body">
-                                        <h5 class="card-title"><a href="{{ route('tasks.show', $task->id) }}">{{ $task->title }}</a></h5>
+                                        <h5 class="card-title"><a
+                                                href="{{ route('tasks.show', $task->id) }}">{{ $task->title }}</a>
+                                        </h5>
                                         <h6 class="card-subtitle mb-2 text-muted">{{ $task->user->name }}</h6>
                                         <p class="card-text">{{ $task->description }}</p>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
+                    </div>
+                    <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="tasks-tab">
+                        <table class="table mt-4">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Sis</th>
+                                    <th scope="col">Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->sis }}</td>
+                                        <td>{{ $user->email }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 

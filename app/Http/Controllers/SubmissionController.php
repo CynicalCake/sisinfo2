@@ -50,8 +50,6 @@ class SubmissionController extends Controller
 
         $task = Task::find($request->get('task-id'));
 
-        $course = Course::find($task->course_id);
-
         return redirect('/tasks/'.$task->id);
     }
 
