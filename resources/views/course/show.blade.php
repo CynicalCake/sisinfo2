@@ -34,8 +34,14 @@
                     <dt class="col-sm-3">Código del curso:</dt>
                     <dd class="col-sm-9">{{ $course->code }}</dd>
 
-                    <dt class="col-sm-3">ID del curso:</dt>
-                    <dd class="col-sm-9">{{ $course->id }}</dd>
+                    @if ($course->owner == Auth::id())
+                        <dt class="col-sm-3"><h4><span class="badge badge-secondary">Eres docente</span></h4></dt>
+                    @else
+                        <dt class="col-sm-3"><h4><span class="badge badge-secondary">Eres estudiante</span></h4></dt>
+                    @endif
+
+                    {{-- <dt class="col-sm-3">ID del curso:</dt>
+                    <dd class="col-sm-9">{{ $course->id }}</dd> --}}
                 </dl>
 
                 <!-- Lista de Anuncios -->
@@ -80,7 +86,14 @@
                             @foreach ($posts as $post)
                                 <div class="card mt-3">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $post->title }}</h5>
+                                        <div class="d-flex justify-content-between">
+                                            <h5 class="card-title">{{ $post->title }}</h5>
+                                            @if ($post->user_id == Auth::id())
+                                                <div>
+                                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-outline-primary">Editar</a>
+                                                </div>
+                                            @endif
+                                        </div>
                                         <h6 class="card-subtitle mb-2 text-muted">{{ $post->user->name }}</h6>
                                         <p class="card-text">{{ $post->description }}</p>
                                     </div>
@@ -97,15 +110,26 @@
                             <button type="submit" class="btn btn-primary">Nueva tarea</button>
                         </form> --}}
                         {{-- <a href="{{ route('tasks.create') }}" class="btn btn-primary">Nueva tarea</a> --}}
-                        <a href="{{ route('tasks.create', ['course_code' => $course->code]) }}"
-                            class="btn btn-primary">Nueva tarea</a>
+                        @if ($course->owner == Auth::id())
+                            <a href="{{ route('tasks.create', ['course_code' => $course->code]) }}" class="btn btn-primary">Nueva tarea</a>
+                        @endif
                         <div class="mt-4">
                             @foreach ($tasks as $task)
                                 <div class="card mt-3">
                                     <div class="card-body">
-                                        <h5 class="card-title"><a
-                                                href="{{ route('tasks.show', $task->id) }}">{{ $task->title }}</a>
-                                        </h5>
+                                        <div class="d-flex justify-content-between">
+                                            @if ($course->owner == Auth::id())
+                                                <h5 class="card-title">{{ $task->title }}</h5>
+                                            @else
+                                                <h5 class="card-title"><a href="{{ route('tasks.show', $task->id) }}">{{ $task->title }}</a></h5>
+                                            @endif
+
+                                            @if ($task->user_id == Auth::id())
+                                                <div>
+                                                    <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-sm btn-outline-primary">Editar</a>
+                                                </div>
+                                            @endif
+                                        </div>
                                         <h6 class="card-subtitle mb-2 text-muted">{{ $task->user->name }}</h6>
                                         <p class="card-text">{{ $task->description }}</p>
                                     </div>

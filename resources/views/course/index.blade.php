@@ -19,6 +19,9 @@
                 <div class="card mt-3">
                     <div class="card-body">
                         <h5 class="card-title">{{ $course->name }}</h5>
+                        @if ($course->owner == Auth::id())
+                            <h6><span class="badge badge-secondary">Eres docente</span></h6>
+                        @endif
                         <p class="card-text">{{ $course->description }}</p>
                         <a href="{{ route('courses.show', $course->code) }}" class="btn btn-primary">Ir al curso</a>
                     </div>

@@ -45,12 +45,17 @@ class CourseController extends Controller
         $course = new Course();
         $course->name = $request->get('name');
         $course->description = $request->get('description');
+        $course->owner = Auth::id();
 
-        $course->code = $this->generateCode();
+        $courseCode = $this->generateCode();
+
+        $course->code = $courseCode;
 
         $course->save();
 
-        return redirect('/courses');
+        $course->enrollUser();
+
+        return redirect('/courses/'.$courseCode);
     }
 
     /**
