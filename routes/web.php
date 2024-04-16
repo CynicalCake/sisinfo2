@@ -10,6 +10,8 @@ Route::resource('/tasks', 'App\Http\Controllers\TaskController');
 Route::post('/tasks/create', 'App\Http\Controllers\TaskController@create')->name('tasks.create');
 Route::get('/tasks/create/{course_code}', 'App\Http\Controllers\TaskController@create')->name('tasks.create');
 
+Route::resource('/submissions', 'App\Http\Controllers\SubmissionController');
+
 
 
 /* Route::post('/tasks', 'App\Http\Controllers\TaskController'); */

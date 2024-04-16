@@ -45,12 +45,17 @@ class CourseController extends Controller
         $course = new Course();
         $course->name = $request->get('name');
         $course->description = $request->get('description');
+        $course->owner = Auth::id();
 
-        $course->code = $this->generateCode();
+        $courseCode = $this->generateCode();
+
+        $course->code = $courseCode;
 
         $course->save();
 
-        return redirect('/courses');
+        $course->enrollUser();
+
+        return redirect('/courses/'.$courseCode);
     }
 
     /**
@@ -59,14 +64,17 @@ class CourseController extends Controller
     public function show(string $code)
     {
         $userId = Auth::id();
+
         $courseIds = Inscription::where('user_id', $userId)->pluck('course_id');
         $myCourses = Course::whereIn('id', $courseIds)->get();
 
         $course = Course::where('code', $code)->firstOrFail();
+
         $posts = $course->posts;
         $tasks = $course->tasks;
+        $users = $course->users;
 
-        return view('course.show', compact('course', 'posts', 'tasks', 'myCourses'));
+        return view('course.show', compact('course', 'posts', 'tasks', 'myCourses', 'users'));
     }
 
     /**
@@ -74,7 +82,9 @@ class CourseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $course = Course::find($id);
+
+        return view('course.edit', compact('course'));
     }
 
     /**
@@ -82,7 +92,13 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $course = Course::find($id);
+        $course->name = $request->get('name');
+        $course->description = $request->get('description');
+
+        $course->save();
+
+        return redirect('/courses/'.$course->code);
     }
 
     /**

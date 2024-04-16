@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -21,7 +22,19 @@ class Course extends Model
 
     public function inscriptions()
     {
-        return $this->hasMany('App\Models\Inscription');
+        return $this->hasMany(Inscription::class);
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'inscriptions');
+    }
+
+    public function enrollUser()
+    {
+        $inscription = new Inscription();
+        $inscription->course_id = $this->id;
+        $inscription->user_id = Auth::id();
+        $inscription->save();
+    }
 }

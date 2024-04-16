@@ -67,7 +67,7 @@ class User extends Authenticatable
 
     public function inscriptions()
     {
-        return $this->hasMany('App\Models\Inscription');
+        return $this->hasMany(Inscription::class);
     }
 
 }

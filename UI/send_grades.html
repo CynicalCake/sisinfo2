@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificación de Tarea</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Aun no definidos */
+    </style>
+</head>
+
+<body>
+    <!--navegation superior-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Plataforma de Estudios</a>
+      </nav>
+    <!-- Contenedor principal -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Columna de la izquierda -->
+            <div class="col-md-6">
+                <!--Cabecera derecha -->
+                <h2>Nombre de la Tarea</h2>
+                <!-- Documento entregado (vacio solo por interfaz) -->
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Documento Entregado</h5>
+                        <!-- Dejar vacío -->
+                    </div>
+                </div>
+                <!-- Puntos de la tarea -->
+                <div class="mt-3">
+                    <h5>Puntaje definido</h5>
+                    <!-- En caso de no ser establecido -->
+                    <!-- <p>Sin puntaje definido</p> -->
+                    <p>10 puntos</p>
+                </div>
+            </div>
+            <!-- Columna derecha -->
+            <div class="col-md-6">
+                <!-- Campo para ingresar comentario -->
+                <form>
+                    <!-- Espacio para ingresar puntaje de la tarea (solo si hay puntaje definido) -->
+                    <div class="form-group">
+                        <label for="puntaje">Puntaje</label>
+                        <input type="number" class="form-control" id="puntaje" placeholder="Ingrese el puntaje">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="comentario">Dejar algun comentario</label>
+                        <textarea class="form-control" id="comentario" rows="3" placeholder="Ingrese su comentario"></textarea>
+                    </div>
+                    <!-- Botón de Calificar -->
+                    <button type="submit" class="btn btn-primary mt-3">Calificar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

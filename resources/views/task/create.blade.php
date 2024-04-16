@@ -33,7 +33,7 @@
 
             <div class="form-group">
                 <label for="task-deadline">Fecha de Vencimiento:</label>
-                <input type="date" class="form-control" id="task-deadline" name="task-deadline" required>
+                <input type="datetime-local" class="form-control" id="task-deadline" name="task-deadline" required>
             </div>
 
             <div class="form-group">

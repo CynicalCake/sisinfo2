@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Submission;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +52,15 @@ class TaskController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $task = Task::find($id);
+
+        $user = Auth::user();
+
+        $existingSubmission = Submission::where('task_id', $id)
+                                        ->where('user_id', $user->id)
+                                        ->exists();
+
+        return view('task.show', compact('task', 'existingSubmission'));
     }
 
     /**
@@ -59,7 +68,9 @@ class TaskController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+
+        return view('task.edit', compact('task'));
     }
 
     /**
@@ -67,7 +78,18 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $task = Task::find($id);
+
+        $task->title = $request->get('task-title');
+        $task->description = $request->get('task-description');
+        $task->deadline = $request->get('task-deadline');
+        $task->score = $request->get('task-score');
+
+        $task->save();
+
+        $course = Course::find($request->get('course-id'));
+
+        return redirect('/courses/'.$course->code);
     }
 
     /**
