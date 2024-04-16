@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4 mb-4">Personas</h2>
+        <form id="taskForm">
+          <button type="submit" class="btn btn-primary">Añadir Persona</button>
+        </form>
+
+        <div class="mt-4">
+          <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        <th scope="col"></th> <!-- Nueva columna para el botón "Eliminar" -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Marco</td>
+                        <td>Sardan</td>
+                        <td>@mdo</td>
+                        <td><button type="button" class="btn btn-outline-danger">Eliminar</button></td> <!-- Botón "Eliminar" -->
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Quispe</td>
+                        <td>@fatquispe</td>
+                        <td><button type="button" class="btn btn-outline-danger">Eliminar</button></td> <!-- Botón "Eliminar" -->
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>Gutierres</td>
+                        <td>@tlagu</td>
+                        <td><button type="button" class="btn btn-outline-danger">Eliminar</button></td> <!-- Botón "Eliminar" -->
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
