@@ -56,9 +56,9 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
     
-        // Verificar si el usuario actual tiene permiso para editar este post
+        // Verificar si el usuario actual es igual al dueño
         if ($post->user_id != Auth::id()) {
-        // Redirigir al usuario a alguna página de error o mostrar un mensaje de error
+        // mostramos un mensaje de error
         return redirect()->back()->with('error', 'No tiene permiso para editar este post.');
         }
     
