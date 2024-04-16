@@ -54,7 +54,16 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+    
+        // Verificar si el usuario actual tiene permiso para editar este post
+        if ($post->user_id != Auth::id()) {
+        // Redirigir al usuario a alguna página de error o mostrar un mensaje de error
+        return redirect()->back()->with('error', 'No tiene permiso para editar este post.');
+        }
+    
+        // Retornar la vista de edición con los datos del post
+        return view('post.edit', compact('post'));
     }
 
     /**
